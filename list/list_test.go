@@ -1,7 +1,7 @@
 package list_test
 
 import (
-	"exp/list"
+	"golang-exp/list"
 	"testing"
 )
 
