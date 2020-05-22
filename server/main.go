@@ -2,17 +2,23 @@ package main
 
 import (
 	"fmt"
-	"html"
 	"log"
 	"net/http"
 )
 
 func main() {
-	// http.Handle("/foo", fooHandler)
 
-	http.HandleFunc("/bar", func(w http.ResponseWriter, r *http.Request) {
-		fmt.Fprintf(w, "Hello, %q", html.EscapeString(r.URL.Path))
+	server := http.NewServeMux()
+
+	server.HandleFunc("/bar", func(w http.ResponseWriter, r *http.Request) {
+		switch r.Method {
+		case "GET":
+			fmt.Fprintf(w, "Hello, %q", "GET")
+		case "POST":
+			fmt.Fprintf(w, "Hello, %q", "POST")
+		}
 	})
 
-	log.Fatal(http.ListenAndServe(":8080", nil))
+	log.Println("start server at 8080")
+	log.Fatal(http.ListenAndServe(":8080", server))
 }
