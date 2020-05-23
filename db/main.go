@@ -9,7 +9,8 @@ import (
 )
 
 type User struct {
-	ID       uint   `gorm:"primary_key"`
+	// ID       uint   `gorm:"primary_key"`
+	gorm.Model
 	Username string `gorm:"unique_index"`
 	Password string `gorm:"not null"`
 }
@@ -22,6 +23,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
+	defer db.Close()
 	db.LogMode(true) // Dev Only!
 	err = db.DB().Ping()
 	if err != nil {
@@ -29,18 +31,46 @@ func main() {
 	}
 	fmt.Println("สวัสดี")
 
-	err = db.AutoMigrate(&User{}).Error
+	err = db.AutoMigrate(
+		&User{},
+		&Comment{},
+	).Error
 	if err != nil {
 		log.Fatal(err)
 	}
 
 	// Insert
-	user := User{
-		Username: "pongneng",
-		Password: "password",
-	}
-	if err := createUser(&user); err != nil {
-		log.Println(err)
-	}
+	// user := User{
+	// 	Username: "pongneng4",
+	// 	Password: "password",
+	// }
+	// if err := createUser(&user); err != nil {
+	// 	log.Println(err)
+	// }
+	// fmt.Printf("user is created with id = %v", user.ID)
 
+	// Read
+	// user1, err := GetUserByID(4)
+	// if err != nil {
+	// 	log.Println(err)
+	// }
+	// fmt.Printf("before update: %#v\n", user1)
+
+	// Update
+	// user1.Username = "pongneng4"
+	// user1.Password = "password2"
+	// if err := updateUser(user1); err != nil {
+	// 	log.Println(err)
+	// }
+
+	// Delete
+	// user2, err := GetUserByID(4)
+	// if err != nil {
+	// 	log.Println(err)
+	// }
+	// fmt.Printf("after update: %#v\n", user2)
+
+	// if err := deleteUser(user2.ID); err != nil {
+	// 	fmt.Println(err)
+	// }
 }
