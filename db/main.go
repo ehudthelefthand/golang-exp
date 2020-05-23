@@ -49,7 +49,7 @@ func main() {
 	// fmt.Printf("user is created with id = %v", user.ID)
 
 	// Read
-	// user1, err := GetUserByID(4)
+	// user1, err := getUserByID(4)
 	// if err != nil {
 	// 	log.Println(err)
 	// }
@@ -63,7 +63,7 @@ func main() {
 	// }
 
 	// Delete
-	// user2, err := GetUserByID(4)
+	// user2, err := getUserByID(4)
 	// if err != nil {
 	// 	log.Println(err)
 	// }
