@@ -36,5 +36,5 @@ func main() {
 	}
 
 	// Insert(db)
-
+	Query(db)
 }

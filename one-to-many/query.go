@@ -16,4 +16,7 @@ func Query(db *gorm.DB) {
 	if err != nil {
 		fmt.Println(err)
 	}
+
+	fmt.Printf("%v \n", user)
+	fmt.Printf("%v \n", comments)
 }
