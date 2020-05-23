@@ -14,8 +14,11 @@ type User struct {
 	Password string `gorm:"not null"`
 }
 
+var db *gorm.DB
+
 func main() {
-	db, err := gorm.Open("mysql", "root:password@tcp(127.0.0.1:3307)/eieidb?charset=utf8&parseTime=True")
+	var err error
+	db, err = gorm.Open("mysql", "root:password@tcp(127.0.0.1:3307)/eieidb?charset=utf8&parseTime=True")
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -30,4 +33,14 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
+
+	// Insert
+	user := User{
+		Username: "pongneng",
+		Password: "password",
+	}
+	if err := createUser(&user); err != nil {
+		log.Println(err)
+	}
+
 }
