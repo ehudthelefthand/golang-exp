@@ -10,8 +10,7 @@ import (
 
 type User struct {
 	gorm.Model
-	Name     string
-	Comments []Comment
+	Name string
 }
 
 type Comment struct {
@@ -36,19 +35,6 @@ func main() {
 		fmt.Println(err)
 	}
 
-	user := User{
-		Name: "Pongneng",
-		Comments: []Comment{
-			Comment{Text: "Hello"},
-			Comment{Text: "World"},
-		},
-	}
+	// Insert(db)
 
-	if err := db.Create(&user).Error; err != nil {
-		fmt.Println(err)
-	}
-
-	if err := db.Delete(&user).Error; err != nil {
-		fmt.Println(err)
-	}
 }
