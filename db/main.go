@@ -33,7 +33,6 @@ func main() {
 
 	err = db.AutoMigrate(
 		&User{},
-		&Comment{},
 	).Error
 	if err != nil {
 		log.Fatal(err)
