@@ -3,7 +3,8 @@ package main
 import "github.com/jinzhu/gorm"
 
 func Insert(db *gorm.DB) {
-	db.Create(&Doctor{Name: "A", Specialist: "หมอตา"})
+	doctor1 := Doctor{Name: "A", Specialist: "หมอตา"}
+	db.Create(&doctor1)
 	db.Create(&Doctor{Name: "B", Specialist: "หมอเด็ก"})
 	db.Create(&Doctor{Name: "C", Specialist: "หมอฟัน"})
 

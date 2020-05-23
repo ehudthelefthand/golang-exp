@@ -1,0 +1,19 @@
+Doctors
+ID  Name    Specialist  
+1   A       หมอตา       
+2   B       หมอเด็ก      
+3   C       หมอฟัน       
+
+
+Cases
+ID     Doctor_ID    Patient_ID  
+1       1           1              
+2       1           2
+3       3           3
+
+
+Patients
+ID  Name    Doctor_ID
+1   แดง     1
+2   ดำ      1
+3   ชาย     3

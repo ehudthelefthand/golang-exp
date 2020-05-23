@@ -30,6 +30,11 @@ func (Cases) TableName() string {
 	return "cases"
 }
 
+type Report struct {
+	Doctor  string
+	Patient string
+}
+
 func main() {
 	db, err := gorm.Open("mysql", "root:password@tcp(127.0.0.1:3307)/eiei3?charset=utf8&parseTime=True")
 	if err != nil {
@@ -48,6 +53,6 @@ func main() {
 	}
 
 	// Insert(db)
-	// ReportBasic(db)
-	ReportNormal(db)
+	ReportStupid(db)
+	// ReportSmart(db)
 }
