@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form action="/upload" method="POST" enctype="multipart/form-data">
+      <input type="file" name="photo" id="photo" />
+      <button>submit</button>
+    </form>
+    <div id="upload" style="border: 1px solid #000; padding: 20px;">
+      Upload!
+    </div>
+    <script>
+      const uploadElem = document.getElementById("upload");
+      const photoElem = document.getElementById("photo");
+
+      const data = new FormData();
+      data.append("photo", photoElem.files[0]);
+
+      uploadElem.addEventListener("click", () => {
+        fetch("/upload", {
+          method: "POST",
+          body: data,
+        })
+          .then(() => {
+            alert("done");
+          })
+          .catch(() => {
+            alert("fail");
+          });
+      });
+    </script>
+  </body>
+</html>
