@@ -15,8 +15,8 @@ import (
 const authorizeURL = "https://www.dropbox.com/oauth2/authorize"
 const tokenURL = "https://www.dropbox.com/oauth2/token"
 const redirectURL = "http://localhost:8080/callback"
-const appID = "kx1y9ttwvd57l69"
-const secret = "t6ix1vd1lm26z75"
+const appID = "[DROPBOX_APP_ID]"
+const secret = "[DROPBOX_APP_SECRET]"
 
 func main() {
 
